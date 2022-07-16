@@ -17,17 +17,20 @@ function Pagination({
   pageSize,
   pageSizeOptions,
 }) {
+  const [leftButtonOption, setLeftButtonOption] = useState(false);
+  const [rightButtonOption, setRightButtonOption] = useState(false);
+  const [highlight, setHighlight] = useState("false");
 
-  const [leftButtonOption, setLeftButtonOption] = useState(false)
-  const [rightButtonOption, setRightButtonOption] = useState(false)
-  const [highlight, setHighlight] = useState("false")
-  
   // Ternary operators to disable functionality of arrow buttons
   useEffect(() => {
-    currentPage === 1 ? setLeftButtonOption(true) : setLeftButtonOption(false)
-    currentPage === (paginationRange[paginationRange.length - 1]) ? setRightButtonOption(true) : setRightButtonOption(false)
-    pageSize >= totalCount ? (setLeftButtonOption(true) && setRightButtonOption(true)) : null
-  }, [onPageChange])
+    currentPage === 1 ? setLeftButtonOption(true) : setLeftButtonOption(false);
+    currentPage === paginationRange[paginationRange.length - 1]
+      ? setRightButtonOption(true)
+      : setRightButtonOption(false);
+    pageSize >= totalCount
+      ? setLeftButtonOption(true) && setRightButtonOption(true)
+      : null;
+  }, [onPageChange]);
 
   const paginationRange = usePagination({
     currentPage,
@@ -50,7 +53,7 @@ function Pagination({
       aria-label="Blog post pagination list"
     >
       <li className="paginationItem">
-      <button
+        <button
           type="button"
           className="arrowButton left"
           // Do not remove the aria-label below, it is used for Hatchways automation.
@@ -87,12 +90,12 @@ function Pagination({
             >
               {pageNumber}
             </button>
-          </li> 
+          </li>
         );
       })}
 
       <li className="paginationItem">
-         <button
+        <button
           type="button"
           className="arrowButton right"
           // Do not remove the aria-label below, it is used for Hatchways automation.

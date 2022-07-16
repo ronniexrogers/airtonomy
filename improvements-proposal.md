@@ -6,7 +6,6 @@ Right now the data for the posts is coming from a json file. What changes would 
         Create an asynchronous function inside of the use effect that would make my fetch call to the api then update my blogPosts variable.
         Something else to consider, would be to have a isLoading variable that would update during the API request.  I'd use this variable to have a spinner icon or loading text while the call is made.
 
-
 Part of this application uses the package nanoid to generate keys. What issue would this cause for generating keys in React?
 
     The issue I can see using an external package like nanoid to generate the keys for list items is that they would not be consistent across renders of the component.  How it stands now, each item would generate a new key upon render.
